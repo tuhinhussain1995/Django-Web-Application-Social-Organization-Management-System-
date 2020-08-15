@@ -1,0 +1,432 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png">
+        <title>Non-Profit</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'css/search.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/lightbox/simpleLightbox.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}">
+        <!-- main css -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
+	      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
+
+	      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
+	      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css">
+	      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css.map">
+    </head>
+<body>
+
+	<!--================ Start Header Menu Area =================-->
+	<header class="header_area">
+		<div class="main_menu">
+			<div class="container">
+				<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<a class="navbar-brand logo_h" href="/"><img src="{% static 'img/logo.png' %}" alt=""></a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+
+							<form class="header-sear-form" action="search" method="post"  style="margin-left: 5%; margin-bottom: 4px">
+                {% csrf_token %}
+  								<input class="header-sear-input" name="mySearch" style="border-radius: 5px; padding: 0px 0px 0px 5px" type="text" placeholder="Search" aria-label="Search">
+  								<button type="submit" style="border-radius: 5px; padding: 0px 5px 1px 5px; margin-left: 3px; line-height: 23px"><i class="fa fa-search"></i></button>
+							</form>
+
+							<ul class="nav navbar-nav menu_nav ml-auto">
+
+								<li class="nav-item active"><a class="nav-link" href="/"><strong>Home</strong></a></li>
+								<li class="nav-item"><a class="nav-link" href="about"><strong>About</strong></a></li>
+								<li class="nav-item"><a class="nav-link" href="objectives"><strong>Objectives</strong></a></li>
+								<li class="nav-item"><a class="nav-link" href="contact"><strong>Contact</strong></a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item submenu dropdown">
+    									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong>Hi, {{user.username}}  <img src="{% static 'img/dropdownIcon.png' %}" style="width:17px; height:17px"></strong></a>
+    									<ul class="dropdown-menu">
+                        <li class="nav-item"><a class="nav-link" href="myAccount"><strong>Show My Profile</strong></a></li>
+    									</ul>
+    								</li>
+                    <li class="nav-item"><a class="nav-link" href="logout"><strong>Log Out</strong></a></li>
+          			{% else %}
+                <li class="nav-item"><a class="nav-link" href="login"><strong>Log In</strong></a></li>
+                <li class="nav-item"><a class="nav-link" href="register"><strong>Sign Up</strong></a></li>
+          			{% endif %}
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<!--================ End Header Menu Area =================-->
+
+	<!--================ Home Banner Area =================-->
+	<section class="home_banner_area">
+		<div class="banner_inner">
+			<div class="container">
+				<div class="banner_content">
+					<p class="upper_text">Give a hand</p>
+					<h2>to make the better world</h2>
+					<p>
+						There are a lot of people who are surviving a scary life. And we all should to save them.<br>We should help to save the world.
+					</p>
+          <button class="primary_btn mr-20" onclick="MessageAlert()"><strong>DONATE BLOOD</strong></button>
+					<a class="primary_btn yellow_btn text-white" href="donationForm"><strong>DONATE MONEY</strong></a>
+					<a class="primary_btn mr-20" href="receiveBlood" style="margin-left: 18px"><strong>RECEIVE BLOOD</strong></a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================ End Home Banner Area =================-->
+
+
+
+
+
+	<!--================ Start Next Events =================-->
+    <section class="event_area section_gap_top" style="padding: 50px 0px 0px 0px;">
+        <div class="container">
+            <div class="main_title"  style="margin-bottom: 50px">
+                <h2>Non-Profit Charities</h2>
+                <p>Our organization always try their best to help others those are in crisis</p><hr>
+            </div>
+
+            <div class="row">
+
+              {% for charity in charities %}
+                  <div class="col-lg-6">
+                      <div class="single_event">
+                          <div class="row align-items-center">
+                              <div class="col-lg-6 col-md-6">
+                                  <figure>
+                                      <img class="img-fluid w-100" src="{{charity.img.url}}" alt="">
+                                      <div class="img-overlay"></div>
+                                  </figure>
+                              </div>
+                              <div class="col-lg-6 col-md-6">
+                                  <div class="content_wrapper">
+                                      <h3 class="title">
+                                          <a href="event-details.html">{{charity.title}}</a>
+                                      </h3>
+                                      <p>
+                                          {{charity.smallDesc}}
+                                      </p>
+                                      <form action="information" method="post">
+                                        {% csrf_token %}
+                                          <input type="submit" class="primary_btn" name="" value="Learn More">
+                                          <input type="hidden" name="chaTypeId" value="{{charity.CharityType_id}}"><br>
+                                      </form>
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    <!--================ End Next Events =================-->
+
+
+
+
+
+	<!--================ Start CTA Area =================-->
+	<div class="cta-area section_gap overlay" style="padding: 50px 0px 50px 0px;">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-7">
+					<h1>Become a volunteer</h1>
+					<p>
+						If you are interested to help people then you can become Non-Profit volunteer.
+						Your little help will be a great support for us. So we can join with us.
+					</p>
+					<a href="volenteerForm" class="primary_btn yellow_btn rounded">join with us</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--================ End CTA Area =================-->
+
+
+
+	<!--================ Start Story Area =================-->
+	<section class="section_gap story_area" style="padding: 50px 0px 10px 0px;">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-7">
+					<div class="main_title" style="margin-bottom: 40px">
+						<h2>Our latest Story</h2>
+						<p>
+							Open lesser winged midst wherein may morning
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+
+        {% for story in stories %}
+      				<!-- single-story -->
+      				<div class="col-lg-4 col-md-6">
+      					<div class="single-story">
+      						<div class="story-thumb">
+      							<img class="img-fluid" src="{{story.img.url}}" alt="">
+      						</div>
+      						<div class="story-details">
+      							<div class="story-meta">
+      								<a href="#">
+      									<span class="lnr lnr-calendar-full"></span>
+      									{{story.date}}
+      								</a>
+      								<a href="#">
+      									<span class="lnr lnr-book"></span>
+      									{{story.location}}
+      								</a>
+      							</div>
+      							<h5>
+      								<a href="#">
+      									{{story.title}}
+      								</a>
+      							</h5>
+      						</div>
+      					</div>
+      				</div>
+          {% endfor %}
+
+			</div>
+		</div>
+	</section>
+	<!--================ End Story Area =================-->
+
+
+  <hr>
+
+  <!--================ Start Features Cause section =================-->
+  	<section class="features_causes" style='padding-bottom:30px'>
+  		<div class="container" style="margin-top:50px">
+  			<div class="main_title" style='margin-bottom:40px'>
+  				<h2>Upcoming Events</h2>
+  				<p>Creepeth called face upon face yielding midst is after moveth </p>
+  			</div>
+  			<div class="row">
+
+          {% for uce in upcoming %}
+      				<div class="col-lg-4 col-md-6">
+      					<div class="card">
+      						<div class="card-body">
+      							<figure>
+      								<img class="card-img-top img-fluid" src="{{uce.img.url}}" alt="Card image cap">
+      							</figure>
+      							<div class="card_inner_body">
+      								<h4 class="card-title">{{uce.title}}</h4>
+      								<p class="card-text">
+      									{{uce.smallDesc}}
+      								</p>
+      								<div class="d-flex justify-content-between raised_goal">
+                          {% if uce.id == 1 %}
+      									      <p>Raised: ${{ eduDon2 }}</p>
+                          {% elif uce.id == 2 %}
+                              <p>Raised: ${{ eduDon3 }}</p>
+                          {% elif uce.id == 3 %}
+                              <p>Raised: ${{ eduDon4 }}</p>
+                          {% endif %}
+      									<p><span>Goal: ${{uce.goal}}</span></p>
+      								</div>
+      								<div class="d-flex justify-content-between donation align-items-center">
+                        {% if uce.id == 1 %}
+                            <a href="donationForm2" class="primary_btn">donate</a>
+                            <p><span class="lnr lnr-heart"></span> {{educationDonor2}} Donors</p>
+                        {% elif uce.id == 2 %}
+                            <a href="donationForm3" class="primary_btn">donate</a>
+                            <p><span class="lnr lnr-heart"></span> {{educationDonor3}} Donors</p>
+                        {% elif uce.id == 3 %}
+                            <a href="donationForm4" class="primary_btn">donate</a>
+                            <p><span class="lnr lnr-heart"></span> {{educationDonor4}} Donors</p>
+                        {% endif %}
+      								</div>
+      							</div>
+      						</div>
+      					</div>
+      				</div>
+            {% endfor %}
+
+  			</div>
+  		</div>
+  	</section>
+  	<!--================ End Features Cause section =================-->
+
+
+
+
+	<!--================ Start Subscribe Area =================-->
+	<div class="container">
+		<div class="subscribe_area">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="d-flex align-items-center">
+						<h1 class="text-white">GET NEW'S & UPDATES</h1>
+						<div>
+							<form action="subscribe" method="post" class="subscribe_form relative">
+								<div class="input-group d-flex flex-row">
+                  {% csrf_token %}
+									<input name="email" placeholder="Your email address" required type="email">
+									<button type="submit" class="ml-10 primary_btn yellow_btn btn sub-btn rounded">SUBSCRIBE</button>
+								</div>
+								<div>
+                  {% if mess == "successful" %}
+                      <script type="text/javascript">
+                        swal('Congratulations!', 'Your Subscription is Successful', 'success');
+                      </script>
+                  {% elif mess == "unsuccessful" %}
+                      <script type="text/javascript">
+                          swal("You have already Subscribed");
+                      </script>
+                  {% elif mess == "volenteerSuccessful" %}
+                      <script type="text/javascript">
+                        swal('Congratulations!', 'Now you are a volenteer of Non-Profit team', 'success');
+                      </script>
+                  {% endif %}
+                </div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--================ End Subscribe Area =================-->
+
+	<!--================ Start footer Area  =================-->
+	<footer>
+		<div class="footer-area">
+			<div class="container">
+				<div class="row section_gap" style="padding: 130px 0px 25px 0px">
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title large_title">Our Mission</h4>
+							<p>To reach out to the downtrodden and the marginalised society in Malaysia by helping them to rebuild their shattered lives through love, rehabilitations and restoration. </p>
+							<p>
+								Thousands of people have received help and aid from us in their hour and need.
+							</p>
+						</div>
+					</div>
+					<div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title">Quick Links</h4>
+							<ul class="list">
+								<li><a href="/">Home</a></li>
+								<li><a href="about">About</a></li>
+								<li><a href="objectives">Objectives</a></li>
+								<li><a href="contact">Contact</a></li>
+								<li><a href="login">Log In</a></li>
+								<li><a href="register">Sign Up</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-6 col-sm-6">
+						<div class="single-footer-widget instafeed">
+							<h4 class="footer_title">Our Founders</h4>
+							<ul class="list instafeed d-flex flex-wrap">
+                  {% for galary in gallaries %}
+								        <li><img src="{{galary.img.url}}" alt=""></li>
+                  {% endfor %}
+							</ul>
+						</div>
+					</div>
+					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title">Contact Us</h4>
+							<div class="ml-40">
+
+                  {% for contact in contacts %}
+      								<p class="sm-head">
+      									<span class="fa fa-location-arrow"></span>
+      									Head Office
+      								</p>
+      								<p>{{contact.location}}</p>
+
+      								<p class="sm-head">
+      									<span class="fa fa-phone"></span>
+      									Phone Number
+      								</p>
+      								<p>
+      									{{contact.phone1}} <br>
+      									{{contact.phone2}}
+      								</p>
+
+      								<p class="sm-head">
+      									<span class="fa fa-envelope"></span>
+      									Email
+      								</p>
+      								<p>
+      									{{contact.email1}} <br>
+      									{{contact.email2}}
+      								</p>
+                  {% endfor %}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row d-flex">
+					<p class="col-lg-12 footer-text text-center">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is developed by Hossain Md Tuhin
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--================ End footer Area  =================-->
+
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'js/popper.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/stellar.js' %}"></script>
+	<script src="{% static 'vendors/lightbox/simpleLightbox.min.js' %}"></script>
+	<script src="{% static 'vendors/nice-select/js/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+	<script src="{% static 'js/mail-script.js' %}"></script>
+	<script src="{% static 'js/countdown.js' %}"></script>
+	<!--gmaps Js-->
+	<script src="{% static 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE' %}"></script>
+	<script src="{% static 'js/gmaps.min.js' %}"></script>
+	<script src="{% static 'js/theme.js' %}"></script>
+
+  <script type="text/javascript">
+
+		function MessageAlert(){
+			swal("Blood Donation Instruction", "Our humble request to all blood donors, please come to our Blood Bank and Donate your valuable Blood.\nOpen 24/7\nAddress 1:Desa Petaling, KL\nAddress 2:Shah Alam, Selangor");
+		}
+
+	</script>
+
+</body>
+</html>

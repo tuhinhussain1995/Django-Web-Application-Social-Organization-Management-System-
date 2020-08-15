@@ -1,0 +1,339 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png">
+        <title>Non-Profit</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'css/search.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/lightbox/simpleLightbox.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}">
+        <!-- main css -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
+    	  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
+
+    	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
+    	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css">
+    	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css.map">
+    </head>
+<body>
+
+	<!--================ Start Header Menu Area =================-->
+	<header class="header_area">
+		<div class="main_menu">
+			<div class="container">
+				<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<a class="navbar-brand logo_h" href="/"><img src="{% static 'img/logo.png' %}" alt=""></a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+
+              <form class="header-sear-form" action="search" method="post"  style="margin-left: 5%; margin-bottom: 4px">
+                {% csrf_token %}
+  								<input class="header-sear-input" name="mySearch" style="border-radius: 5px; padding: 0px 0px 0px 5px" type="text" placeholder="Search" aria-label="Search">
+  								<button type="submit" style="border-radius: 5px; padding: 0px 5px 1px 5px; margin-left: 3px; line-height: 23px"><i class="fa fa-search"></i></button>
+							</form>
+
+							<ul class="nav navbar-nav menu_nav ml-auto">
+
+                <li class="nav-item"><a class="nav-link" href="/"><strong>Home</strong></a></li>
+								<li class="nav-item"><a class="nav-link" href="about"><strong>About</strong></a></li>
+								<li class="nav-item"><a class="nav-link" href="objectives"><strong>Objectives</strong></a></li>
+								<li class="nav-item active"><a class="nav-link" href="contact"><strong>Contact</strong></a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item submenu dropdown">
+    									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong>Hi, {{user.username}}  <img src="{% static 'img/dropdownIcon.png' %}" style="width:17px; height:17px"></strong></a>
+    									<ul class="dropdown-menu">
+                        <li class="nav-item"><a class="nav-link" href="myAccount"><strong>Show My Profile</strong></a></li>
+    									</ul>
+    								</li>
+                    <li class="nav-item"><a class="nav-link" href="logout"><strong>Log Out</strong></a></li>
+          			{% else %}
+                <li class="nav-item"><a class="nav-link" href="login"><strong>Log In</strong></a></li>
+                <li class="nav-item"><a class="nav-link" href="register"><strong>Sign Up</strong></a></li>
+          			{% endif %}
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<!--================ End Header Menu Area =================-->
+
+  <!--================ Home Banner Area =================-->
+  <section class="banner_area">
+      <div class="banner_inner d-flex align-items-center">
+          <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+          <div class="container">
+              <div class="banner_content text-center">
+                  <h2>Contact Us</h2>
+              </div>
+          </div>
+      </div>
+  </section>
+<!--================ End Home Banner Area =================-->
+
+
+
+<!--================Contact Area =================-->
+    <section class="contact_area section_gap" style="padding:40px 0px 0px 0px">
+        <div class="container">
+          <div class="main_title" style='margin-bottom:30px'>
+    				<h2>Our Location</h2>
+    			</div>
+            <div id="mapBox" class="mapBox" style="margin-bottom:40px">
+              <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5634.286621066679!2d101.69915658317325!3d3.083391730021099!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc5277f25d0a93%3A0x7c281f8eb0016236!2sAl-Madinah%20International%20University!5e0!3m2!1sen!2smy!4v1584608449075!5m2!1sen!2smy" width="100%" height="400px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></p>
+            </div>
+        </div>
+    </section><hr>
+    <!--================Contact Area =================-->
+
+
+<!--================Contact Area =================-->
+    <section class="contact_area section_gap" style="padding:40px 0px 40px 0px">
+        <div class="container">
+            <div class="main_title" style='margin-bottom:20px'>
+      				<h2>Contact with Us</h2>
+      			</div>
+            <div class="row">
+                <div class="col-lg-4">
+                  <div class="" style="margin-bottom:20px">
+                    <h3 style="text-align:center; color:#9121E0; background: #DCE9FF; padding:10px 0px 10px 0px">Information</h3>
+                  </div>
+                    <div class="contact_info" style="margin-top:10px">
+                        {% for contact in contacts %}
+                            <div class="info_item">
+                                <i class="lnr lnr-home"></i>
+                                <h6>{{contact.location}}</h6>
+                                <p>Mon to Fri 9am to 6 pm</p>
+                            </div>
+                            <div class="info_item">
+                                <i class="lnr lnr-phone-handset"></i>
+                                <h6><a href="#">{{contact.phone1}}</a></h6>
+                                <h6><a href="#">{{contact.phone2}}</a></h6>
+                                <p>Mon to Fri 9am to 6 pm</p>
+                            </div>
+                            <div class="info_item">
+                                <i class="lnr lnr-envelope"></i>
+                                <h6><a href="#">{{contact.email1}}</a></h6>
+                                <h6><a href="#">{{contact.email2}}</a></h6>
+                                <p>Send us your query anytime!</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="" style="margin-bottom:20px">
+                      <h3 style="text-align:center; color:#9121E0; background: #DCE9FF; padding:10px 0px 10px 0px">Do you have a question?</h3>
+                    </div>
+                    <form class="row" action="question" method="post" id="contactForm">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                              {% csrf_token %}
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group" style="margin-top:19px">
+                              {% csrf_token %}
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" required>
+                            </div>
+                            <div class="form-group" style="margin-top:19px">
+                              {% csrf_token %}
+                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <textarea class="form-control" name="message" id="message" rows="5" placeholder="Enter Your Question" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-right" style="margin-top:15px">
+                            <button type="submit" value="submit" class="btn primary_btn">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div>
+                  {% if mess == "succ" %}
+                      <script type="text/javascript">
+                        swal('Successful!', 'Your Question is Submitted', 'success');
+                      </script>
+                  {% elif mess == "unsucc" %}
+                      <script type="text/javascript">
+                          swal("Unsuccessful to Submit Your Question");
+                      </script>
+
+                  {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--================Contact Area =================-->
+
+
+    <!--================ Start Subscribe Area =================-->
+  	<div class="container">
+  		<div class="subscribe_area">
+  			<div class="row">
+  				<div class="col-lg-12">
+  					<div class="d-flex align-items-center">
+  						<h1 class="text-white">GET NEW'S & UPDATES</h1>
+  						<div>
+  							<form action="subscribe" method="post" class="subscribe_form relative">
+  								<div class="input-group d-flex flex-row">
+                    {% csrf_token %}
+  									<input name="email" placeholder="Your email address" required type="email">
+  									<button type="submit" class="ml-10 primary_btn yellow_btn btn sub-btn rounded">SUBSCRIBE</button>
+  								</div>
+  								<div>
+                    {% if mess == "successful" %}
+                        <script type="text/javascript">
+                          swal('Congratulations!', 'Your Subscription is Successful', 'success');
+                        </script>
+                    {% elif mess == "unsuccessful" %}
+                        <script type="text/javascript">
+                            swal("You have already Subscribed");
+                        </script>
+                    {% elif mess == "volenteerSuccessful" %}
+                        <script type="text/javascript">
+                          swal('Congratulations!', 'Now you are a volenteer of Non-Profit team', 'success');
+                        </script>
+                    {% endif %}
+                  </div>
+  							</form>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  	<!--================ End Subscribe Area =================-->
+
+
+
+
+
+
+	<!--================ Start footer Area  =================-->
+	<footer>
+		<div class="footer-area">
+			<div class="container">
+				<div class="row section_gap" style="padding: 130px 0px 25px 0px">
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title large_title">Our Mission</h4>
+							<p>To reach out to the downtrodden and the marginalised society in Malaysia by helping them to rebuild their shattered lives through love, rehabilitations and restoration. </p>
+							<p>
+								Thousands of people have received help and aid from us in their hour and need.
+							</p>
+						</div>
+					</div>
+					<div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title">Quick Links</h4>
+							<ul class="list">
+                <li><a href="/">Home</a></li>
+								<li><a href="about">About</a></li>
+								<li><a href="objectives">Objectives</a></li>
+								<li><a href="contact">Contact</a></li>
+								<li><a href="login">Log In</a></li>
+								<li><a href="register">Sign Up</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-6 col-sm-6">
+						<div class="single-footer-widget instafeed">
+							<h4 class="footer_title">Our Founders</h4>
+							<ul class="list instafeed d-flex flex-wrap">
+                  {% for galary in gallaries %}
+								        <li><img src="{{galary.img.url}}" alt=""></li>
+                  {% endfor %}
+							</ul>
+						</div>
+					</div>
+					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title">Contact Us</h4>
+							<div class="ml-40">
+
+                  {% for contact in contacts %}
+      								<p class="sm-head">
+      									<span class="fa fa-location-arrow"></span>
+      									Head Office
+      								</p>
+      								<p>{{contact.location}}</p>
+
+      								<p class="sm-head">
+      									<span class="fa fa-phone"></span>
+      									Phone Number
+      								</p>
+      								<p>
+      									{{contact.phone1}} <br>
+      									{{contact.phone2}}
+      								</p>
+
+      								<p class="sm-head">
+      									<span class="fa fa-envelope"></span>
+      									Email
+      								</p>
+      								<p>
+      									{{contact.email1}} <br>
+      									{{contact.email2}}
+      								</p>
+                  {% endfor %}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row d-flex">
+					<p class="col-lg-12 footer-text text-center">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is developed by Hossain Md Tuhin
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--================ End footer Area  =================-->
+
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'js/popper.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/stellar.js' %}"></script>
+	<script src="{% static 'vendors/lightbox/simpleLightbox.min.js' %}"></script>
+	<script src="{% static 'vendors/nice-select/js/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+	<script src="{% static 'js/mail-script.js' %}"></script>
+	<script src="{% static 'js/countdown.js' %}"></script>
+	<!--gmaps Js-->
+	<script src="{% static 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE' %}"></script>
+	<script src="{% static 'js/gmaps.min.js' %}"></script>
+	<script src="{% static 'js/theme.js' %}"></script>
+</body>
+</html>

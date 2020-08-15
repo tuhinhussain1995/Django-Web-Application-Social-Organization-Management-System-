@@ -1,0 +1,112 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+
+<head>
+    <!-- Add meta tags for mobile and IE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png">
+    <title>Non-Profit</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/lightbox/simpleLightbox.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}">
+    <!-- main css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+</head>
+
+<body style="background:#999999">
+    <br><br><br><br>
+
+    <div class="container" style="max-width:1000px; margin-bottom:0px">
+		<div class="jumbotron">
+		  <div style="text-align:center">
+          <h1>Donation for Non-Profit Organization</h1>
+          <h3>Enter Your Desired Payment Method</h3>
+          <br><h4 style="color:green">Donation Amount: &nbsp;$&nbsp;{{ totalAmount }}</h4>
+      </div>
+		  <hr class="my-4">
+
+      <div>
+          <div style="margin-left:auto; margin-right: auto; width:60%; margin-top:60px">
+                  <!-- Set up a container element for the button -->
+                  <div id="paypal-button-container"></div>
+
+                  <!-- Include the PayPal JavaScript SDK -->
+                  <script src="https://www.paypal.com/sdk/js?client-id=AZLY_miQ1EPpbv46obvGjXpUCOnWB_SEUCu96Y3wf_2t8a_-ggldHSCF32mOYpu5Y7aKYCtTezbKaNBE&currency=USD"></script>
+
+                  <script>
+                      var status = "unsuccessful";
+                      // Render the PayPal button into #paypal-button-container
+                      paypal.Buttons({
+
+                          // Set up the transaction
+                          createOrder: function(data, actions) {
+                              return actions.order.create({
+                                  purchase_units: [{
+                                      amount: {
+                                          value: '{{ totalAmount }}'
+                                      }
+                                  }]
+                              });
+                          },
+
+                          // Finalize the transaction
+                          onApprove: function(data, actions) {
+                              return actions.order.capture().then(function(details) {
+                                  // Show a success message to the buyer
+
+                                  status = "successful";
+
+                                  if(status == "successful"){
+                                    document.myform.submit();
+                                  }
+
+                              });
+                          }
+
+
+                      }).render('#paypal-button-container');
+
+                  </script>
+
+
+                  <form name="myform" action="successful" method="post">
+                    {% csrf_token %}
+                      <input type="hidden" name="amount" value="{{ totalAmount }}"><br>
+
+                  </form>
+          </div>
+      </div>
+
+		</div>
+	</div>
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+  <script src="{% static 'js/popper.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/stellar.js' %}"></script>
+  <script src="{% static 'vendors/lightbox/simpleLightbox.min.js' %}"></script>
+  <script src="{% static 'vendors/nice-select/js/jquery.nice-select.min.js' %}"></script>
+  <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+  <script src="{% static 'js/mail-script.js' %}"></script>
+  <script src="{% static 'js/countdown.js' %}"></script>
+  <!--gmaps Js-->
+  <script src="{% static 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE' %}"></script>
+  <script src="{% static 'js/gmaps.min.js' %}"></script>
+  <script src="{% static 'js/theme.js' %}"></script>
+</body>

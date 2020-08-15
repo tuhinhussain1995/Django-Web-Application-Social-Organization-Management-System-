@@ -1,0 +1,63 @@
+body {
+	line-height: 25px;
+	font-size: 15px;
+	font-family: $text-font;
+	font-weight: normal;
+	color: $text-color;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $title-font;
+	font-weight: 600;
+	color: $title-color;
+}
+.list {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+a {
+	text-decoration: none;
+	transition: all 0.3s ease-in-out;
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		outline: none;
+	}
+}
+
+button:focus {
+	outline: none;
+	box-shadow: none;
+}
+
+// Margin Left
+.ml-10 {
+	margin-left: 10px;
+}
+.ml-20 {
+	margin-left: 20px;
+}
+.ml-40 {
+	margin-left: 40px;
+}
+// Margin Right
+.mr-20 {
+	margin-right: 20px;
+}
+.mr-25 {
+	margin-right: 25px;
+}
+
+// Margin TOp
+.mt-20 {
+	margin-top: 20px;
+}
+.mt-25 {
+	margin-top: 25px;
+}

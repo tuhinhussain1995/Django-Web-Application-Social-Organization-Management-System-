@@ -1,0 +1,362 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png">
+        <title>Non-Profit</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'css/search.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/lightbox/simpleLightbox.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}">
+        <!-- main css -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    </head>
+<body>
+
+	<!--================ Start Header Menu Area =================-->
+	<header class="header_area">
+		<div class="main_menu">
+			<div class="container">
+				<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<a class="navbar-brand logo_h" href="/"><img src="{% static 'img/logo.png' %}" alt=""></a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+
+              <form class="header-sear-form" action="search" method="post"  style="margin-left: 5%; margin-bottom: 4px">
+                {% csrf_token %}
+  								<input class="header-sear-input" name="mySearch" style="border-radius: 5px; padding: 0px 0px 0px 5px" type="text" placeholder="Search" aria-label="Search">
+  								<button type="submit" style="border-radius: 5px; padding: 0px 5px 1px 5px; margin-left: 3px; line-height: 23px"><i class="fa fa-search"></i></button>
+							</form>
+
+							<ul class="nav navbar-nav menu_nav ml-auto">
+
+                <li class="nav-item"><a class="nav-link" href="/"><strong>Home</strong></a></li>
+								<li class="nav-item active"><a class="nav-link" href="about"><strong>About</strong></a></li>
+								<li class="nav-item"><a class="nav-link" href="objectives"><strong>Objectives</strong></a></li>
+								<li class="nav-item"><a class="nav-link" href="contact"><strong>Contact</strong></a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item submenu dropdown">
+    									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong>Hi, {{user.username}}  <img src="{% static 'img/dropdownIcon.png' %}" style="width:17px; height:17px"></strong></a>
+    									<ul class="dropdown-menu">
+                        <li class="nav-item"><a class="nav-link" href="myAccount"><strong>Show My Profile</strong></a></li>
+    									</ul>
+    								</li>
+                    <li class="nav-item"><a class="nav-link" href="logout"><strong>Log Out</strong></a></li>
+          			{% else %}
+                <li class="nav-item"><a class="nav-link" href="login"><strong>Log In</strong></a></li>
+                <li class="nav-item"><a class="nav-link" href="register"><strong>Sign Up</strong></a></li>
+          			{% endif %}
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<!--================ End Header Menu Area =================-->
+
+  <!--================ Home Banner Area =================-->
+  <section class="banner_area">
+      <div class="banner_inner d-flex align-items-center">
+          <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+          <div class="container">
+              <div class="banner_content text-center">
+                  <h2>About Non-Profit</h2>
+              </div>
+          </div>
+      </div>
+  </section>
+<!--================ End Home Banner Area =================-->
+
+
+
+
+<!--================ Start About Us Area =================-->
+	<section class="about_area section_gap" style="padding:50px 0px 0px 0px">
+        <div class="container">
+            <div class="row">
+                <div class="single_about row">
+                    <div class="col-lg-6 col-md-12 text-center about_left">
+                        <div class="about_thumb">
+                            <img src="{% static 'img/about-img.jpg' %}" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 about_right" style="padding:80px 60px">
+                        <div class="about_content">
+                            <h2>
+                                We are nonprofit team <br>
+                                    and work worldwide
+                            </h2>
+                            <p>
+                                    Their multiply doesn't behold shall appear living heaven second
+                                    roo lights. Itself hath thing for won't herb forth gathered good
+                                    bear fowl kind give fly form winged for reason
+                            </p>
+                            <p>
+                                    Land their given the seasons herb lights fowl beast whales it
+                                    after multiply fifth under to it waters waters created heaven
+                                    very fill agenc to. Dry creepeth subdue them kind night behold
+                                    rule stars him grass waters our without.Fifth under to it waters waters created heaven
+                                    very fill agenc to. Dry creepeth subdue them kind night behold
+                                    rule stars him grass waters.
+                            </p>
+                            <a href="#" class="primary_btn">Learn more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><hr>
+    <!--================ End About Us Area =================-->
+
+
+
+    <!--================Team Area =================-->
+  	<section class="team_area section_gap" style="padding:30px 30px 0px 30px">
+          <div class="container">
+              <div class="main_title" style="margin-bottom:50px">
+                  <h2>Meet our voluteer</h2>
+                  <p>Creepeth called face upon face yielding midst is after moveth </p>
+              </div>
+              <div class="row team_inner">
+
+                  {% for aup in users %}
+                      <div class="col-lg-3 col-md-6">
+                          <div class="team_item" style="margin-bottom:30px">
+                              <div class="team_img">
+                                  <img class="img-fluid" src="{{aup.picture.url}}" alt="" style="width:263px; height:270px">
+                              </div>
+                              <div class="team_name">
+                                  <h4>{{aup.full_name}}</h4>
+                                  <p>{{aup.address}}</p>
+                                  <div class="social">
+                                      {% if aup.facebook == "" %}
+                                          <a href="" class="disabled"><i class="fa fa-facebook"></i></a>
+                                      {% elif aup.facebook != "" %}
+                                          <a href="{{aup.facebook}}" target="_blank" class="active"><i class="fa fa-facebook"></i></a>
+                                      {% endif %}
+
+                                      {% if aup.twitter == "" %}
+                                          <a href="" class="disabled"><i class="fa fa-twitter"></i></a>
+                                      {% elif aup.twitter != "" %}
+                                          <a href="{{aup.twitter}}" target="_blank" class="active"><i class="fa fa-twitter"></i></a>
+                                      {% endif %}
+
+                                      {% if aup.instagram == "" %}
+                                          <a href="" class="disabled"><i class="fa fa-instagram"></i></a>
+                                      {% elif aup.instagram != "" %}
+                                          <a href="{{aup.instagram}}" target="_blank" class="active"><i class="fa fa-instagram"></i></a>
+                                      {% endif %}
+
+                                      {% if aup.whatsapp == "" %}
+                                          <a href="" class="disabled"><i class="fa fa-whatsapp"></i></a>
+                                      {% elif aup.whatsapp != "" %}
+                                          <a href="{{aup.whatsapp}}" target="_blank" class="active"><i class="fa fa-whatsapp"></i></a>
+                                      {% endif %}
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  {% endfor %}
+
+              </div>
+
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="blog_left_sidebar">
+
+                        <nav class="blog-pagination justify-content-center d-flex" style="padding-top:60px; padding-bottom:20px">
+
+                          {% if users.has_other_pages %}
+                            <ul class="pagination">
+                              {% if users.has_previous %}
+                                <li class="page-item">
+                                  <a class="page-link"  aria-label="Previous" href="?page={{ users.previous_page_number }}">
+                                    <span aria-hidden="true">
+                                        <span class="lnr lnr-chevron-left"></span>
+                                    </span>
+                                  </a>
+                                </li>
+                              {% else %}
+                                <li class="page-item" class="disabled">
+                                    <a class="page-link"  aria-label="Previous" href="">
+                                      <span aria-hidden="true">
+                                          <span class="lnr lnr-chevron-left"></span>
+                                      </span>
+                                    </a>
+                                  </li>
+                              {% endif %}
+
+
+                              {% for i in users.paginator.page_range %}
+                                {% if users.number == i %}
+                                  <li class="page-item active">
+                                    <a class="page-link" href="?page={{ i }}">
+                                      {{ i }}
+                                    </a>
+                                  </li>
+                                {% else %}
+                                  <li class="page-item">
+                                    <a class="page-link" href="?page={{ i }}">
+                                      {{ i }}
+                                    </a>
+                                  </li>
+                                {% endif %}
+                              {% endfor %}
+
+
+                              {% if users.has_next %}
+                                <li class="page-item">
+                                  <a class="page-link"  aria-label="Next" href="?page={{ users.next_page_number }}">
+                                    <span aria-hidden="true">
+                                        <span class="lnr lnr-chevron-right"></span>
+                                    </span>
+                                  </a>
+                                </li>
+                              {% else %}
+                                <li class="page-item" class="disabled">
+                                    <a class="page-link"  aria-label="Next" href="">
+                                      <span aria-hidden="true">
+                                          <span class="lnr lnr-chevron-right"></span>
+                                      </span>
+                                    </a>
+                                  </li>
+                              {% endif %}
+                          </ul>
+                        {% endif %}
+                        </nav>
+
+
+                      </div>
+                  </div>
+              </div>
+
+
+          </div>
+      </section>
+      <!--================End Team Area =================-->
+
+
+
+	<!--================ Start footer Area  =================-->
+	<footer>
+		<div class="footer-area">
+			<div class="container">
+				<div class="row section_gap" style="padding: 40px 0px 20px 0px">
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title large_title">Our Mission</h4>
+							<p>To reach out to the downtrodden and the marginalised society in Malaysia by helping them to rebuild their shattered lives through love, rehabilitations and restoration. </p>
+							<p>
+								Thousands of people have received help and aid from us in their hour and need.
+							</p>
+						</div>
+					</div>
+					<div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title">Quick Links</h4>
+							<ul class="list">
+                <li><a href="/">Home</a></li>
+								<li><a href="about">About</a></li>
+								<li><a href="objectives">Objectives</a></li>
+								<li><a href="contact">Contact</a></li>
+								<li><a href="login">Log In</a></li>
+								<li><a href="register">Sign Up</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-6 col-sm-6">
+						<div class="single-footer-widget instafeed">
+							<h4 class="footer_title">Our Founders</h4>
+							<ul class="list instafeed d-flex flex-wrap">
+                  {% for galary in gallaries %}
+								        <li><img src="{{galary.img.url}}" alt=""></li>
+                  {% endfor %}
+							</ul>
+						</div>
+					</div>
+					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title">Contact Us</h4>
+							<div class="ml-40">
+
+                  {% for contact in contacts %}
+      								<p class="sm-head">
+      									<span class="fa fa-location-arrow"></span>
+      									Head Office
+      								</p>
+      								<p>{{contact.location}}</p>
+
+      								<p class="sm-head">
+      									<span class="fa fa-phone"></span>
+      									Phone Number
+      								</p>
+      								<p>
+      									{{contact.phone1}} <br>
+      									{{contact.phone2}}
+      								</p>
+
+      								<p class="sm-head">
+      									<span class="fa fa-envelope"></span>
+      									Email
+      								</p>
+      								<p>
+      									{{contact.email1}} <br>
+      									{{contact.email2}}
+      								</p>
+                  {% endfor %}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row d-flex">
+					<p class="col-lg-12 footer-text text-center">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is developed by Hossain Md Tuhin
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--================ End footer Area  =================-->
+
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'js/popper.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/stellar.js' %}"></script>
+	<script src="{% static 'vendors/lightbox/simpleLightbox.min.js' %}"></script>
+	<script src="{% static 'vendors/nice-select/js/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+	<script src="{% static 'js/mail-script.js' %}"></script>
+	<script src="{% static 'js/countdown.js' %}"></script>
+	<!--gmaps Js-->
+	<script src="{% static 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE' %}"></script>
+	<script src="{% static 'js/gmaps.min.js' %}"></script>
+	<script src="{% static 'js/theme.js' %}"></script>
+</body>
+</html>

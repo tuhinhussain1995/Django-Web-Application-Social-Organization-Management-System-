@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Title</title>
+
+    </head>
+    <body>
+        <div>
+            <div>
+              <br>
+              <div style="margin-left:200px">
+                <img src="https://scontent.fkul16-1.fna.fbcdn.net/v/t1.0-9/101795788_294856571538555_8884048656735404032_n.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_ohc=4Fz5nnXIbYoAX9py1Sw&_nc_ht=scontent.fkul16-1.fna&oh=dfcb577a2e30065627d4313f8a2c8a5b&oe=5EFD4A07" height="70" width="300"/>
+              </div>
+
+              <div>
+                <strong><p style="text-align:center; font-size: 30px; font-family:Times; margin-bottom:0px; padding-bottom:0px; ">Non-Profit Blood Receiving Recipt</p></strong>
+              </div>
+              <hr style="margin:0px; padding:0px">
+            </div>
+        <div>
+        <div style="font-size: 20px; font-family:Times; margin-left:40px; margin-top:20px">
+            <br>
+              {% for abg in availableBG %}
+                <p>Reference No: <strong style="color:blue">{{abg.id}}</strong></p>
+                <p>ApplyDate: <strong>{{abg.apply_date}}</strong></p>
+              {% endfor %}
+            <br>
+              {% for aup in auth_user_profile %}
+                <p>Receiver Id: <strong style="color:green">{{aup.id}}</strong></p>
+                <p>Receiver Name: <strong>{{aup.full_name}}</strong></p>
+              {% endfor %}
+
+              {% for user in users %}
+                  <p>Receiver Email: <strong>{{user.email}}</strong></p>
+              {% endfor %}
+            <br><br>
+
+            <p style="font-size:16px; color:red">Note: <strong style="color:red">Please Collect Your Blood Within 24 Hours</strong></p>
+
+            <br>
+
+            <p><u><strong>Our Address:</strong></u><br><span style="font-size:15px">Unit 27-07-01, Winner Height Condominium,<br>Jalan 2/125, Taman Desa Petaling, 57100<br>Kuala Lumpur, Malaysia</span></p>
+
+            <br><br><br>
+
+            <p style="color:#3FB57D; font-size:12px; text-align:center; margin-right:50px">This receipt is computer generated and no signature is required.</p>
+
+        </div>
+        <div>
+
+        </div>
+    </div>
+
+    </body>
+</html>
