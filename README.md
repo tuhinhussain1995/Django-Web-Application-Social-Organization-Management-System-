@@ -1,6 +1,6 @@
-# Java-Data-Structures
+# Social Organization Management System
 
-# Motivation Group
+# Non-Profit
 ### This is a Django Dynamic Ecommerce Web Based Application that is created to manage a social organization money and blood donation records.
 <br/>
 
@@ -63,12 +63,11 @@
 ![17](https://user-images.githubusercontent.com/50451175/92089038-3bdd7000-ee00-11ea-9338-081ccd23f505.PNG)
 
 
-
-## Admin Panel (View 1)
+## Django Admin Panel Login
 ![18](https://user-images.githubusercontent.com/50451175/92089040-3c760680-ee00-11ea-8d5e-4fcfa02b358c.PNG)
 
 
-## Django Admin Panel Login
+## Admin Panel (View 1)
 ![19](https://user-images.githubusercontent.com/50451175/92089046-3c760680-ee00-11ea-9cda-8fad2d33c084.PNG)
 
 
