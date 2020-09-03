@@ -7,10 +7,10 @@
 # Some User Interfaces of this Website:
 
 ## Home Page
-![1](https://user-images.githubusercontent.com/50451175/89397163-121e2400-d742-11ea-8a51-e978f96c70d3.PNG)
+![1](https://user-images.githubusercontent.com/50451175/92088991-32540800-ee00-11ea-8eae-e8f9f94caf69.PNG)
 
 ## Registration Page
-![2](https://user-images.githubusercontent.com/50451175/89397208-2530f400-d742-11ea-903e-ce2affd8cd11.png)
+![2](https://user-images.githubusercontent.com/50451175/92088999-34b66200-ee00-11ea-835d-e2089f3f7131.PNG)
 
 ## Admin & User Panel
 ![3](https://user-images.githubusercontent.com/50451175/89397229-2d892f00-d742-11ea-8a31-faef02da888a.png)
