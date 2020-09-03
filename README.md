@@ -39,39 +39,47 @@
 ## User Profile - Update Profile Information
 ![11](https://user-images.githubusercontent.com/50451175/92089024-38e27f80-ee00-11ea-824f-f1a0a8fee783.PNG)
 
-## Registration & Donation Form
+
+## User Activities
 ![12](https://user-images.githubusercontent.com/50451175/92089027-397b1600-ee00-11ea-9a3b-3c85791ab774.PNG)
 
-## Donation Processing Using Paypal Gateway
+## Registration & Donation Form
 ![13](https://user-images.githubusercontent.com/50451175/92089028-3a13ac80-ee00-11ea-9c44-77caa34bd0b6.PNG)
 
-## Donation Processing Paypal Login
+
+## Donation Processing Using Paypal Gateway
 ![14](https://user-images.githubusercontent.com/50451175/92089034-3aac4300-ee00-11ea-93eb-cab076c24d5f.PNG)
 
-## Donation Processing Last Step
+
+## Donation Processing Paypal Login
 ![15](https://user-images.githubusercontent.com/50451175/92089035-3aac4300-ee00-11ea-9572-e8647b038c5e.PNG)
 
-## Donation Process Successful
+
+## Donation Processing Last Step
 ![16](https://user-images.githubusercontent.com/50451175/92089037-3b44d980-ee00-11ea-9c75-5d7633d125ea.PNG)
 
-## Django Admin Panel Login
+
+## Donation Process Successful
 ![17](https://user-images.githubusercontent.com/50451175/92089038-3bdd7000-ee00-11ea-9338-081ccd23f505.PNG)
+
+
 
 ## Admin Panel (View 1)
 ![18](https://user-images.githubusercontent.com/50451175/92089040-3c760680-ee00-11ea-8d5e-4fcfa02b358c.PNG)
 
-## Admin Panel (view-2)
+
+## Django Admin Panel Login
 ![19](https://user-images.githubusercontent.com/50451175/92089046-3c760680-ee00-11ea-9cda-8fad2d33c084.PNG)
 
-## Blood Donation Process
-![admin](https://user-images.githubusercontent.com/50451175/92089048-3d0e9d00-ee00-11ea-95e8-2e8693445682.png)
-
-## Contact and Query
-![b](https://user-images.githubusercontent.com/50451175/92089051-3da73380-ee00-11ea-9485-575a0136e5ac.PNG)
-
-## Admin Panel (view-1)
-![cont](https://user-images.githubusercontent.com/50451175/92089054-3e3fca00-ee00-11ea-99ac-3b41cd412cbd.png)
 
 ## Admin Panel (view-2)
-![m](https://user-images.githubusercontent.com/50451175/92089057-3ed86080-ee00-11ea-852a-b3a0662c39d1.PNG)
+![admin](https://user-images.githubusercontent.com/50451175/92089048-3d0e9d00-ee00-11ea-95e8-2e8693445682.png)
+
+
+## Blood Donation Process
+![b](https://user-images.githubusercontent.com/50451175/92089051-3da73380-ee00-11ea-9485-575a0136e5ac.PNG)
+
+
+## Contact and Query
+![cont](https://user-images.githubusercontent.com/50451175/92089054-3e3fca00-ee00-11ea-99ac-3b41cd412cbd.png)
 
