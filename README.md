@@ -4,6 +4,13 @@
 ### This is a Django Dynamic Ecommerce Web Based Application that is created to manage a social organization money and blood donation records.
 <br/>
 
+# This Project Video Link:
+
+Part-1: https://www.linkedin.com/posts/tuhin95_django-html5-css3-activity-6720274407685812224-iTtK
+Part-2: https://www.linkedin.com/posts/tuhin95_django-html5-css3-activity-6720276351640858624-eqNA
+<br/>
+#
+
 # Some User Interfaces of this Website:
 
 ## Home Page - Welcome View
