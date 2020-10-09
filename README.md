@@ -7,6 +7,7 @@
 # This Project Video Link:
 
 Part-1: https://www.linkedin.com/posts/tuhin95_django-html5-css3-activity-6720274407685812224-iTtK
+<br/>
 Part-2: https://www.linkedin.com/posts/tuhin95_django-html5-css3-activity-6720276351640858624-eqNA
 <br/>
 #
